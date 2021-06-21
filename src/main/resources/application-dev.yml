@@ -5,7 +5,7 @@ javaguo:
   application:
     name: user
   datasource:
-    url: jdbc:mysql://47.101.60.233:3306/spring_cloud?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://47.101.60.233:3306/t1?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: mxc123
   redis:

@@ -55,6 +55,7 @@
 		}).extend({
 			index: 'lib/index' //主入口模块
 		}).use(['index' , 'table' , 'form'],function(){
+			var token = getToken();
 			var $ = layui.$
 			,form = layui.form
 			,table = layui.table
@@ -102,6 +103,7 @@
 						admin.req({
 							url: baseUrl + '/system/perResource/selectResourceIdsByRoleId'
 							,data: {'roleId': id}
+							,headers:token
 							,done: function(res){
 								//角色下资源id集合
 								var perResourceIds = res.data.perResourceIds;

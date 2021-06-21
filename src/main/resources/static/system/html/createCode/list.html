@@ -77,6 +77,7 @@
             , roleResourceName = '代码生成'
             , projectSelectOption = '';
 
+        var token = getToken();
         //进入界面成功后可执行的方法，可用于初始化一些数据
         var successFunction =
             {
@@ -178,6 +179,7 @@
                                 admin.req({
                                     url: baseUrl + actionUrl + 'insert'
                                     , type: 'post'
+                                    , headers: token
                                     , data: data.field	//layui-form下的input
                                     , done: function (res) {
                                         table.reload('LAY-table-list'); //数据刷新
@@ -259,10 +261,12 @@
                 },
                 //加载项目信息
                 getProjectInfo: function () {
+                    var paramAddInfo1 = paramAddInfo({});
                     //初始化项目列表
                     admin.req({
                         url: baseUrl + '/system/project/selectByUserId'
                         , async: false
+                        ,headers : paramAddInfo1
                         , data: {userId: layui.data('memberInfo').info.id}
                         , done: function (res) {
                             if ('0000000' == res.code) {

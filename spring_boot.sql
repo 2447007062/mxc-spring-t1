@@ -235,7 +235,7 @@ CREATE TABLE `sys_public_param` (
 -- ----------------------------
 -- Records of sys_public_param
 -- ----------------------------
-INSERT INTO `sys_public_param` VALUES ('260365981518532608', '2019-02-26 21:28:17', '2019-02-28 11:38:49', '0', 'SystemInterceptor_validateSignFlag', 'true', '系统拦截器_是否验证签名');
+INSERT INTO `sys_public_param` VALUES ('260365981518532608', '2019-02-26 21:28:17', '2019-02-28 11:38:49', '0', 'SystemInterceptor_validateSignFlag', 'false', '系统拦截器_是否验证签名');
 INSERT INTO `sys_public_param` VALUES ('260366343243698176', '2019-02-26 21:29:43', '2019-02-28 14:03:30', '0', 'SystemInterceptor_validateTokenFlag', 'true', '系统拦截器_是否验证令牌');
 INSERT INTO `sys_public_param` VALUES ('260366978869497856', '2019-02-26 21:32:15', '2019-02-28 14:01:57', '0', 'SystemInterceptor_validateAuthFlag', 'true', '系统拦截器_是否验证权限');
 INSERT INTO `sys_public_param` VALUES ('260368997634150400', '2019-02-26 21:40:16', '2019-02-26 21:40:16', '0', 'SystemInterceptor_privateKey', 'springbootsystem', '系统拦截器_私有key');
@@ -247,7 +247,7 @@ INSERT INTO `sys_public_param` VALUES ('260625724157857792', '2019-02-27 14:40:2
 INSERT INTO `sys_public_param` VALUES ('260626092598104064', '2019-02-27 14:41:52', '2019-02-27 14:48:05', '0', 'APIInterceptor_privateKey', 'springbootapi', 'API拦截器_私有key');
 INSERT INTO `sys_public_param` VALUES ('260626465723387904', '2019-02-27 14:43:21', '2019-02-27 14:47:57', '0', 'APIInterceptor_excludeTokenUrlAPI', '/api/api/test', '拦截器_不需要验证token的url');
 INSERT INTO `sys_public_param` VALUES ('260626608069677056', '2019-02-27 14:43:55', '2019-02-27 14:47:46', '0', 'APIInterceptor_excludeAuthUrlAPI', '/api/api/test', '拦截器_不需要验证权限的url');
-INSERT INTO `sys_public_param` VALUES ('260628149803552768', '2019-02-27 14:50:03', '2019-03-04 14:06:09', '0', 'Project_name', '天尔软件', '项目_名称');
+INSERT INTO `sys_public_param` VALUES ('260628149803552768', '2019-02-27 14:50:03', '2019-03-04 14:06:09', '0', 'Project_name', '显城软件', '项目_名称');
 INSERT INTO `sys_public_param` VALUES ('260628503853142016', '2019-02-27 14:51:27', '2019-02-27 15:59:46', '0', 'Project_describe', '后台管理模板系统', '项目_描述');
 INSERT INTO `sys_public_param` VALUES ('260642093326798848', '2019-02-27 15:45:27', '2019-02-27 15:59:51', '0', 'Project_title', '后台管理系统', '项目_标题');
 

@@ -41,20 +41,20 @@ import java.util.Map;
  * 解决：
  * 移除 @SpringBootApplication 然后使用 @Configuration、@EnableAutoConfiguration 和 @ComponentScan注解来扫描特定的包
  */
-//@SpringBootApplication
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan(basePackages = {
-        "top.javaguo.biz.sso.controller",
-        "top.javaguo.biz.sso.service",
-        "top.javaguo.biz.system.controller",
-        "top.javaguo.biz.system.service",
-        "top.javaguo.core.cache.redis",
-        "top.javaguo.core.intercept.webMvcConfigurerAdapter",
-        "top.javaguo.core.biz.controller",
-        "top.javaguo.biz.others.qq.wx.miniprogram",
-        "top.javaguo.biz.others.qq.wx.util",
-})
+@SpringBootApplication
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan(basePackages = {
+//        "top.javaguo.biz.sso.controller",
+//        "top.javaguo.biz.sso.service",
+//        "top.javaguo.biz.system.controller",
+//        "top.javaguo.biz.system.service",
+//        "top.javaguo.core.cache.redis",
+//        "top.javaguo.core.intercept.webMvcConfigurerAdapter",
+//        "top.javaguo.core.biz.controller",
+//        "top.javaguo.biz.others.qq.wx.miniprogram",
+//        "top.javaguo.biz.others.qq.wx.util",
+//})
 public class Application {
 
     public static void main(String[] args) {

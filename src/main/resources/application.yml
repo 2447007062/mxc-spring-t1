@@ -1,5 +1,5 @@
 server:
-  port: 443
+  port: 8200
   ssl:
     key-store: ${javaguo.ssl.key-store}   # 证书名字
     key-store-password: ${javaguo.ssl.key-store-password}        # 密钥库密码
@@ -72,8 +72,8 @@ spring:
   #文件上传下载限制
   servlet:
     multipart:
-      max-file-size: 10Mb  #单个文件大小，如果不限制大小，则设置为-1即可
-      max-request-size: 100Mb   #总上传的数据大小，如果不限制大小，则设置为-1即可
+      max-file-size: 10MB #单个文件大小，如果不限制大小，则设置为-1即可
+      max-request-size: 100MB   #总上传的数据大小，如果不限制大小，则设置为-1即可
 
 mybatis.configuration.map-underscore-to-camel-case: true  #开启驼峰转换
 #mybatis配置

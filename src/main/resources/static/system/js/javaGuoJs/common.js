@@ -1,6 +1,6 @@
 /**
  * 公共js
- * @author javaGuo
+ * @author mxc
  * @date 2018/03/09
  */
 
@@ -11,7 +11,7 @@
 document.write("<script language=javascript src='/static/system/js/javaGuoJs/md5.js'></script>");
 
 /**url前缀**/
-var baseUrl = "https://localhost";
+var baseUrl = "https://localhost:8200";
 
 /**判断是否登录**/
 isSuccess();
@@ -63,7 +63,7 @@ function isSuccess() {
 
 /**
  * 添加增加功能
- * @author javaGuo
+ * @author mxc
  * @date 2018/4/3
  */
 function setAddFunction() {
@@ -98,7 +98,7 @@ function delCookie(key) {
 function setLocalStorage(key, value, seconds) {
     if (!value) localStorage.removeItem(key);
     else {
-        var seconds = (seconds || 30 * 60) * 1000; // 资源有效期，默认保留30分钟
+        var seconds = (seconds || 300 * 60) * 1000; // 资源有效期，默认保留30分钟
         var exp = new Date();
         value.expires = exp.getTime() + seconds;
         window.localStorage.setItem(key + '', JSON.stringify(value));
@@ -123,7 +123,7 @@ function delLocalStorage(key) {
 
 /**
  * 给list页面增加页码
- * @author javaGuo
+ * @author mxc
  * @date 2018/4/3
  */
 function pageLimitChangeAdd() {
@@ -133,7 +133,7 @@ function pageLimitChangeAdd() {
 
 /**
  * 给list页面增加排序
- * @author javaGuo
+ * @author mxc
  * @date 2018/4/3
  */
 function pageOrderChangeAdd(orderParam) {
@@ -194,7 +194,7 @@ function pageLeftMenuAdd() {
 
 /**
  *@describe: 给参数对象中加入相关信息
- *@author: javaGuo
+ *@author: mxc
  *@date: 2018-09-11
  **/
 function paramAddInfo(param) {
@@ -212,10 +212,21 @@ function paramAddInfo(param) {
     jsonTemp.sign = sign;
     return jsonTemp;
 }
+/**
+ *@describe: 给参数对象中加入相关信息
+ *@author: mxc 
+ **/
+function getToken() {
+    var jsonTemp = {};
+    if (!isEmpty(layui.data('memberInfo').info)) {
+        jsonTemp.token = layui.data('memberInfo').info.token;
+    }
+    return jsonTemp;
+}
 
 /**
  *@describe: 列表对应页面功能初始化
- *@author: javaGuo
+ *@author: mxc
  *@date: 2018-09-11
  **/
 function initPageFunction($, form, table, admin, actionUrl, successFunction, roleResourceName, tableRenderJson, width, height) {
@@ -270,6 +281,7 @@ function initPageFunction($, form, table, admin, actionUrl, successFunction, rol
                         admin.req({
                             url: baseUrl + actionUrl + 'insert'
                             , type: 'post'
+                            , headers:getToken()
                             , data: data.field	//layui-form下的input
                             , done: function (res) {
                                 tableRenderJson.headers = paramAddInfo();

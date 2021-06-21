@@ -1,5 +1,6 @@
 package top.javaguo.core.intercept.webMvcConfigurerAdapter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,15 +16,11 @@ import top.javaguo.core.intercept.interceptor.SystemInterceptor;
 @Configuration
 public class BaseWebAppConfigurer implements WebMvcConfigurer {
 
-    @Bean
-    public SystemInterceptor SystemInterceptor() {
-        return new SystemInterceptor();
-    }
+    @Autowired
+    public SystemInterceptor systemInterceptor;
 
-    @Bean
-    public APIInterceptor APIInterceptor() {
-        return new APIInterceptor();
-    }
+    @Autowired
+    public APIInterceptor apiInterceptor;
 
 	/**
 	 * 添加拦截器
@@ -31,14 +28,14 @@ public class BaseWebAppConfigurer implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(APIInterceptor())
+        registry.addInterceptor(apiInterceptor)
                 .addPathPatterns("/api/**")//拦截
                 .excludePathPatterns("/api/loginApi/**")//放行
                 .excludePathPatterns("/api/shareApi/**")
                 .excludePathPatterns("/api/miniAppApi/**")
         ;
 
-        registry.addInterceptor(SystemInterceptor())
+        registry.addInterceptor(systemInterceptor)
                 .addPathPatterns("/system/**");
     }
 

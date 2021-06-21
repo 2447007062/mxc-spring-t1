@@ -63,6 +63,7 @@
 		}).extend({
 			index: 'lib/index' //主入口模块
 		}).use(['index' , 'form'],function(){
+			var token = getToken();
 			var $ = layui.$
 			,form = layui.form	
 			,admin = layui.admin
@@ -71,6 +72,7 @@
 			//初始化菜单资源
 			admin.req({
 				url: baseUrl + '/system/perResource/selectAllForPerResourceEdit'
+				,headers:token
 				,done: function(res){
 					perResouce = res.data.list;
 					var userRoleHtml = '';
