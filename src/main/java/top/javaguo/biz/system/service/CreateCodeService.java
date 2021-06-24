@@ -105,29 +105,49 @@ public class CreateCodeService extends BaseService<CreateCode> {
     @Override
     public void clearBeanManyCache() {
     }
-
     /**
      * 生成代码
      **/
     public RespBean<Map<String, Object>> createZip(HttpServletRequest request, HttpServletResponse response,
                                                    CreateCode bean) throws Exception {
+
         bean = createCodeDao.selectById(bean);
         CreateMain cm = new CreateMain();
-        String path = "http://www.javaguo.top:8067/system/createCode/getCodeFileStr";
-        List<NameValuePair> parametersBody = new ArrayList();
-        parametersBody.add(new BasicNameValuePair("createCodeJsonStr", GuoJsonUtil.Object2Json(bean)));
-        List<NameValuePair> parametersHeader = new ArrayList();
-        String privateKey = "springbootsystem";
-        long publicKey = System.currentTimeMillis();
-        // 根据时间戳和私钥生成签名
-        String sign = GuoMD5Util.GetMD5Code(privateKey + publicKey);
-        parametersHeader.add(new BasicNameValuePair("publicKey", String.valueOf(publicKey)));
-        parametersHeader.add(new BasicNameValuePair("sign", sign));
-        String result = GuoHttpRequestUtil.postFormAddHeader(path, parametersBody, parametersHeader);
-        RespBean<Map<String, String>> respBean = GuoJsonUtil.json2Bean(result, RespBean.class);
-        String filePath = cm.create(respBean.getData(), bean.getClassName());
+        Map<String, String> map = new HashMap<>();
+        map.put("bean", cm.createBean(bean));
+        map.put("controller", cm.createController(bean));
+        map.put("service", cm.createService(bean));
+        map.put("dao", cm.createDao(bean));
+        map.put("mapper", cm.createMapper(bean));
+        map.put("htmlListPage", cm.createListHtml(bean));
+        map.put("htmlAddAndEditPage", cm.createEditHtml(bean));
+        map.put("sqlFile", cm.createSql(bean));
+        String filePath = cm.create(map, bean.getClassName());
         System.out.println(GuoDownloadUtil.downLoadFile(request, filePath, response, bean.getClassName(), "zip"));
         return null;
     }
+//    /**
+//     * 生成代码
+//     **/
+//    public RespBean<Map<String, Object>> createZip(HttpServletRequest request, HttpServletResponse response,
+//                                                   CreateCode bean) throws Exception {
+//        bean = createCodeDao.selectById(bean);
+//        CreateMain cm = new CreateMain();
+//        String path = "http://www.javaguo.top:8067/system/createCode/getCodeFileStr";
+//        List<NameValuePair> parametersBody = new ArrayList();
+//        parametersBody.add(new BasicNameValuePair("createCodeJsonStr", GuoJsonUtil.Object2Json(bean)));
+//        List<NameValuePair> parametersHeader = new ArrayList();
+//        String privateKey = "springbootsystem";
+//        long publicKey = System.currentTimeMillis();
+//        // 根据时间戳和私钥生成签名
+//        String sign = GuoMD5Util.GetMD5Code(privateKey + publicKey);
+//        parametersHeader.add(new BasicNameValuePair("publicKey", String.valueOf(publicKey)));
+//        parametersHeader.add(new BasicNameValuePair("sign", sign));
+//        String result = GuoHttpRequestUtil.postFormAddHeader(path, parametersBody, parametersHeader);
+//        RespBean<Map<String, String>> respBean = GuoJsonUtil.json2Bean(result, RespBean.class);
+//        String filePath = cm.create(respBean.getData(), bean.getClassName());
+//        System.out.println(GuoDownloadUtil.downLoadFile(request, filePath, response, bean.getClassName(), "zip"));
+//        return null;
+//    }
 
 }

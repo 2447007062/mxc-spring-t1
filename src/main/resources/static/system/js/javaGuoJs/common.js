@@ -350,6 +350,7 @@ function initPageFunction($, form, table, admin, actionUrl, successFunction, rol
                         admin.req({
                             url: baseUrl + actionUrl + 'updateById'
                             , type: 'post'
+                            , headers:getToken()
                             , data: data.field	//layui-form下的input
                             , done: function (res) {
                                 tableRenderJson.headers = paramAddInfo();
