@@ -93,7 +93,6 @@ layui.define(['laytpl', 'layer'], function(exports){
       type: 'get'
       ,dataType: 'json'
       ,success: function(res){
-    	alert(res.code);
         var statusCode = response.statusCode;
         //TODO 登录成功把用户信息放入缓存，未做
         //登录成功,写入 access_token

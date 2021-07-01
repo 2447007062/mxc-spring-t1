@@ -301,6 +301,7 @@ function initPageFunction($, form, table, admin, actionUrl, successFunction, rol
                 admin.req({
                     url: baseUrl + actionUrl + 'deleteById'
                     , type: 'post'
+                    , headers:getToken()
                     , data: {id: obj.data.id}	//layui-form下的input
                     , done: function (res) {
                         tableRenderJson.headers = paramAddInfo();
@@ -323,6 +324,7 @@ function initPageFunction($, form, table, admin, actionUrl, successFunction, rol
                 admin.req({
                     url: baseUrl + actionUrl + 'deleteByIds'
                     , type: 'post'
+                    , headers:getToken()
                     , data: {ids: ids}	//layui-form下的input
                     , done: function (res) {
                         tableRenderJson.headers = paramAddInfo();

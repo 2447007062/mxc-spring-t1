@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import org.apache.ibatis.annotations.Param;
 
 import top.javaguo.core.util.SnowflakeIdWorkerUtil;
+import top.javaguo.utils.GuoStringUtil;
 
 /**
  * @describe 基础mapper
@@ -185,24 +186,6 @@ public class BaseMapper<T> {
                 (Integer) methodInvoke(this.selectCommonMethods.get("getOffset"), bean),
                 (Integer) methodInvoke(this.selectCommonMethods.get("getLimit"), bean), commonWhere(bean));
     }
-
-    /** 替换字符串中的除首字母以外的大写字母为_加小写字母 **/
-    protected String replaceUpperToLower(String param) {
-        String temp = "";
-        if (!isEmpty(param)) {
-            for (int i = 0; i < param.length(); i++) {
-                char c = param.charAt(i);
-                if (Character.isUpperCase(c)) {
-                    if (i != 0)
-                        temp += '_';
-                    temp += String.valueOf(c).toLowerCase();
-                } else
-                    temp += c;
-            }
-        }
-        return temp;
-    }
-
     /**
      * 获取查询语句
      *
@@ -240,7 +223,7 @@ public class BaseMapper<T> {
     protected String baseOrderBy(String orderBy, String sortingRules) {
         String sql = "";
         if (!isEmpty(orderBy)) {
-            sql += " ORDER BY t." + replaceUpperToLower(orderBy) + " ";
+            sql += " ORDER BY t." + GuoStringUtil.replaceUpperToLower(orderBy) + " ";
             if (!isEmpty(sortingRules)) {
                 if (!"desc".equals(sortingRules))
                     sql += " ASC ";

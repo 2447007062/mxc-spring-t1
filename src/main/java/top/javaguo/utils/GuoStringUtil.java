@@ -56,13 +56,17 @@ public class GuoStringUtil {
         if (!isEmpty(param)) {
             for (int i = 0; i < param.length(); i++) {
                 char c = param.charAt(i);
-                if (!Character.isLowerCase(c)) {
+                if (Character.isUpperCase(c)) {
                     if (i != 0) temp += '_';
                     temp += String.valueOf(c).toLowerCase();
                 } else temp += c;
             }
         }
         return temp;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(replaceUpperToLower("T1"));
     }
 
     /**

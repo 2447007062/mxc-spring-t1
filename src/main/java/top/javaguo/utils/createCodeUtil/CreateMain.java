@@ -146,7 +146,7 @@ public class CreateMain {
                 "import top.javaguo.core.resp.RespBean;\r\n" +
                 "import top.javaguo.utils.GuoRespBeanUtil;\r\n" +
                 "import top.javaguo.utils.GuoStringUtil;\r\n" +
-                "import top.javaguo.utils.SnowflakeIdWorkerUtil;\r\n" +
+                "import top.javaguo.core.util.SnowflakeIdWorkerUtil;\r\n" +
                 "\r\n" +
                 "/**\r\n" +
                 " * @describe " + bean.getDescribes() + "\r\n" +
