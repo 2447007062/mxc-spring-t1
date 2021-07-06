@@ -1,5 +1,6 @@
 package top.javaguo.biz.system.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,6 @@ public class T1Controller extends BaseController<T1>{
 	 */
 	@PostMapping("/insert")
 	public RespBean<Map<String, Object>> insert(T1 bean) {
-		 
 		bean.setId(SnowflakeIdWorkerUtil.SIWU.nextId());
 		return returnIntercept(t1Service.insert(bean), t1Service);
 	}
@@ -88,6 +88,14 @@ public class T1Controller extends BaseController<T1>{
 	/**LayUI根据条件查询所有**/
 	@GetMapping("/selectAllForLayUI")
 	public Map<String, Object> selectAllForLayUI(T1 bean) { return t1Service.selectAllForLayUI(bean); }
+
+	/**LayUI根据条件查询所有**/
+	@GetMapping("/test1")
+	public Map<String, Object> test1() {
+		Map<String, Object> stringObjectHashMap = new HashMap<>();
+		stringObjectHashMap.put("data",t1Service.test1());
+		return stringObjectHashMap;
+	}
 
 
 }

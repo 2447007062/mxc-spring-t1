@@ -309,43 +309,43 @@ public class CreateMain {
                 "\r\n" +
                 "	/**根据条件查询所有**/\r\n" +
                 "	@SelectProvider(type=" + className + "Mapper.class,method = \"selectAll\")\r\n" +
-                "	public List<" + className + "> selectAll(@Param(\"bean\")" + className + " bean);\r\n" +
+                "	List<" + className + "> selectAll(@Param(\"bean\")" + className + " bean);\r\n" +
                 "\r\n" +
                 "	/**根据条件查询所有的个数**/\r\n" +
                 "	@SelectProvider(type=" + className + "Mapper.class,method = \"selectTotal\")\r\n" +
-                "	public int selectTotal(@Param(\"bean\")" + className + " bean);\r\n" +
+                "	int selectTotal(@Param(\"bean\")" + className + " bean);\r\n" +
                 "\r\n" +
                 "	/**添加**/\r\n" +
                 "	@InsertProvider(type=" + className + "Mapper.class,method = \"insert\")\r\n" +
-                "	public int insert(@Param(\"bean\")" + className + " bean);\r\n" +
+                "	int insert(@Param(\"bean\")" + className + " bean);\r\n" +
                 "\r\n" +
                 "	/**通过id删除**/\r\n" +
                 "	@DeleteProvider(type=" + className + "Mapper.class,method = \"deleteById\")\r\n" +
-                "	public int deleteById(@Param(\"id\")String id);\r\n" +
+                "	int deleteById(@Param(\"id\")String id);\r\n" +
                 "\r\n" +
                 "	/**通过id修改**/\r\n" +
                 "	@UpdateProvider(type=" + className + "Mapper.class,method = \"updateById\")\r\n" +
-                "	public int updateById(@Param(\"bean\")" + className + " bean);\r\n" +
+                "	int updateById(@Param(\"bean\")" + className + " bean);\r\n" +
                 "\r\n" +
                 "	/**通过id查询**/\r\n" +
                 "	@SelectProvider(type=" + className + "Mapper.class,method = \"selectById\")\r\n" +
-                "	public " + className + " selectById(@Param(\"bean\")" + className + " bean);\r\n" +
+                "	" + className + " selectById(@Param(\"bean\")" + className + " bean);\r\n" +
                 "\r\n" +
                 "	/**通过ids集合删除**/\r\n" +
                 "	@DeleteProvider(type=" + className + "Mapper.class,method = \"deleteByIds\")\r\n" +
-                "	public int deleteByIds(@Param(\"ids\")String ids);\r\n" +
+                "	int deleteByIds(@Param(\"ids\")String ids);\r\n" +
                 "\r\n" +
                 "	/**根据关联条件查询所有**/\r\n" +
                 "	@SelectProvider(type=" + className + "Mapper.class,method = \"selectAllForRelation\")\r\n" +
-                "	public List<" + className + "> selectAllForRelation(@Param(\"bean\")" + className + " bean);\r\n" +
+                "	List<" + className + "> selectAllForRelation(@Param(\"bean\")" + className + " bean);\r\n" +
                 "\r\n" +
                 "	/**根据关联条件查询所有的个数**/\r\n" +
                 "	@SelectProvider(type=" + className + "Mapper.class,method = \"selectTotalForRelation\")\r\n" +
-                "	public int selectTotalForRelation(@Param(\"bean\")" + className + " bean);\r\n" +
+                "	int selectTotalForRelation(@Param(\"bean\")" + className + " bean);\r\n" +
                 "\r\n" +
                 "	/**根据关联id查询**/\r\n" +
                 "	@SelectProvider(type=" + className + "Mapper.class,method = \"selectByIdForRelation\")\r\n" +
-                "	public " + className + " selectByIdForRelation(@Param(\"id\")String id);\r\n" +
+                "	" + className + " selectByIdForRelation(@Param(\"id\")String id);\r\n" +
                 "\r\n" +
                 "}\r\n" +
                 "";

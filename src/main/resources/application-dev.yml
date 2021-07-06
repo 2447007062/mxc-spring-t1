@@ -1,7 +1,7 @@
 javaguo:
 #sql日志打印
-  logging:
-    config: classpath:log/logback/logback-dev.xml
+#  logging:
+#    config: classpath:log/logback/logging-config.xml
   application:
     name: user
   datasource:
@@ -24,3 +24,8 @@ javaguo:
       customToken: cxqc                           #微信公众平台-小程序客服消息令牌
       appid: wx81300af14665b6e7                   #微信公众平台-小程序APPID
       secret: a7ed61c2e93fd3fbd2de866a493a0ff5    #微信公众平台-小程序秘钥
+
+zopen:
+  zweb:
+    core:
+      log-file-path: D:\\projectfile\\user\\logs\\

@@ -11,7 +11,7 @@
 document.write("<script language=javascript src='/static/system/js/javaGuoJs/md5.js'></script>");
 
 /**url前缀**/
-var baseUrl = "https://localhost:8200";
+var baseUrl = "http://localhost:8200";
 
 /**判断是否登录**/
 isSuccess();

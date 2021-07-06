@@ -42,6 +42,7 @@ import java.util.Map;
  * 移除 @SpringBootApplication 然后使用 @Configuration、@EnableAutoConfiguration 和 @ComponentScan注解来扫描特定的包
  */
 @SpringBootApplication
+@MapperScan(value = {"top.javaguo.biz.system.dao","top.javaguo.biz.sso.dao"})
 //@Configuration
 //@EnableAutoConfiguration
 //@ComponentScan(basePackages = {
@@ -64,33 +65,33 @@ public class Application {
         application.run(args);
     }
 
-    @Bean
-    public ServletWebServerFactory servletContainer() {
-        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory(){
-            @Override
-            protected void postProcessContext(Context context) {
-                SecurityConstraint securityConstraint = new SecurityConstraint();
-                securityConstraint.setUserConstraint("CONFIDENTIAL");//机密的
-                SecurityCollection securityCollection = new SecurityCollection();
-                securityCollection.addPattern("/*");
-                securityConstraint.addCollection(securityCollection);
-                context.addConstraint(securityConstraint);
-            }
-        };
-        factory.addAdditionalTomcatConnectors(createStandardConnector());
-        return factory;
-    }
-
-    private Connector createStandardConnector() {
-        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
-        connector.setScheme("http");
-        //监听http的端口号
-        connector.setPort(80);
-        connector.setSecure(false);
-        //监听到http的端口号后转向到的https的端口号
-        connector.setRedirectPort(443);//这里的端口写成和配置文件一样的端口就Ok
-        return connector;
-    }
+//    @Bean
+//    public ServletWebServerFactory servletContainer() {
+//        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory(){
+//            @Override
+//            protected void postProcessContext(Context context) {
+//                SecurityConstraint securityConstraint = new SecurityConstraint();
+//                securityConstraint.setUserConstraint("CONFIDENTIAL");//机密的
+//                SecurityCollection securityCollection = new SecurityCollection();
+//                securityCollection.addPattern("/*");
+//                securityConstraint.addCollection(securityCollection);
+//                context.addConstraint(securityConstraint);
+//            }
+//        };
+////        factory.addAdditionalTomcatConnectors(createStandardConnector());
+//        return factory;
+//    }
+//
+//    private Connector createStandardConnector() {
+//        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+//        connector.setScheme("http");
+//        //监听http的端口号
+//        connector.setPort(80);
+//        connector.setSecure(false);
+//        //监听到http的端口号后转向到的https的端口号
+//        connector.setRedirectPort(443);//这里的端口写成和配置文件一样的端口就Ok
+//        return connector;
+//    }
 
 }
 

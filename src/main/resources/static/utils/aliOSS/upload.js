@@ -8,7 +8,7 @@
 accessid = 'LTAI06QfAvmNq3Wh';
 accesskey = 'LQDLbGu3u64kvyWy5V5gfMUKzDEyao';
 // 请求地址
-host = 'https://cxqc-2019.oss-cn-hangzhou.aliyuncs.com/';
+host = 'http://cxqc-2019.oss-cn-hangzhou.aliyuncs.com/';
 
 // 下面三个字段不用配置
 // 文件上传路径

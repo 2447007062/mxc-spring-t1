@@ -1,5 +1,7 @@
 package top.javaguo.core.intercept.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import top.javaguo.biz.sso.bean.PerResource;
 import top.javaguo.biz.sso.dto.SysUserResult;
 import top.javaguo.core.cache.redis.GuoRedisUtil;
@@ -22,6 +24,7 @@ import java.util.Map;
  */
 public class InterceptUtil {
 
+    private static final Logger logger = LoggerFactory.getLogger(InterceptUtil.class);
     /**
      * 验证签名
      *
@@ -119,14 +122,14 @@ public class InterceptUtil {
 
             long endTime = System.currentTimeMillis();    //获取结束时间
 
-            System.out.println("第一处使用时间：" + (endTime - startTime) + "ms");    //输出程序运行时间
+            logger.debug("第一处使用时间：" + (endTime - startTime) + "ms");    //输出程序运行时间
 
             // 刷新令牌有效期
             guoRedisUtil.expire(token, 60 * 60 * 24 * 15 );
 
             long endTime2 = System.currentTimeMillis();    //获取结束时间
 
-            System.out.println("第二处使用时间：" + (endTime2 - endTime) + "ms");    //输出程序运行时间
+            logger.debug("第二处使用时间：" + (endTime2 - endTime) + "ms");    //输出程序运行时间
 
             // 当请求状态为500时则说明代码异常且未处理，此处做最终守护
             if (response.getStatus() == 500) {
@@ -157,7 +160,7 @@ public class InterceptUtil {
 
                     long endTime3 = System.currentTimeMillis();    //获取结束时间
 
-                    System.out.println("1最终使用时间：" + (endTime3 - startTime) + "ms");    //输出程序运行时间
+                    logger.debug("1最终使用时间：" + (endTime3 - startTime) + "ms");    //输出程序运行时间
 
                     return authResult;
                 } else {

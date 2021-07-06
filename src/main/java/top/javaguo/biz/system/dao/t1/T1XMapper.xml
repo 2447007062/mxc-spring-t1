@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.javaguo.biz.system.dao.t1.T1Dao">
+	
+	<!-- <cache /> -->
+
+     <select id="test1" resultType="top.javaguo.biz.system.bean.T1">
+         select * from t1
+     </select>
+
+</mapper>

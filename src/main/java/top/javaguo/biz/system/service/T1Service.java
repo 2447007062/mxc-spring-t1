@@ -49,5 +49,8 @@ public class T1Service extends BaseService<T1>{
 	}
 
 
+	public Object test1() {
+		return t1Dao.test1();
+	}
 }
 

@@ -33,10 +33,12 @@ public class BaseWebAppConfigurer implements WebMvcConfigurer {
                 .excludePathPatterns("/api/loginApi/**")//放行
                 .excludePathPatterns("/api/shareApi/**")
                 .excludePathPatterns("/api/miniAppApi/**")
+                .excludePathPatterns("/open/project/info")
         ;
 
         registry.addInterceptor(systemInterceptor)
-                .addPathPatterns("/system/**");
+                .addPathPatterns("/system/**")
+                .excludePathPatterns("/open/project/info");
     }
 
 }

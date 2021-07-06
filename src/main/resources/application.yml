@@ -1,13 +1,19 @@
 server:
   port: 8200
-  ssl:
-    key-store: ${javaguo.ssl.key-store}   # 证书名字
-    key-store-password: ${javaguo.ssl.key-store-password}        # 密钥库密码
-    key-store-type: ${javaguo.ssl.key-store-type}             # 行业标准PKCS12
-
+#  ssl:
+#    key-store: ${javaguo.ssl.key-store}   # 证书名字
+#    key-store-password: ${javaguo.ssl.key-store-password}        # 密钥库密码
+#    key-store-type: ${javaguo.ssl.key-store-type}             # 行业标准PKCS12
 logging:
-  config: ${javaguo.logging.config}
-
+  config: classpath:log/logback/logging-config.xml
+  level:
+    root: INFO
+    org:
+      apache:
+        tomcat: WARN
+        catalina:
+          core:
+            AprLifecycleListener: WARN
 spring:
   profiles: #读取配置文件
     active: dev  #测试环境
@@ -17,7 +23,7 @@ spring:
   datasource:
     # 驱动配置信息
     type: com.alibaba.druid.pool.DruidDataSource    # 连接池类型
-    driver-class-name: com.mysql.jdbc.Driver        # mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver        # mysql
     url: ${javaguo.datasource.url}
     username: ${javaguo.datasource.username}
     password: ${javaguo.datasource.password}      # 连接池的配置信息
@@ -72,9 +78,8 @@ spring:
   #文件上传下载限制
   servlet:
     multipart:
-      max-file-size: 10MB #单个文件大小，如果不限制大小，则设置为-1即可
+      max-file-size: 100MB #单个文件大小，如果不限制大小，则设置为-1即可
       max-request-size: 100MB   #总上传的数据大小，如果不限制大小，则设置为-1即可
-
 mybatis.configuration.map-underscore-to-camel-case: true  #开启驼峰转换
 #mybatis配置
 mybatis:
