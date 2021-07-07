@@ -8,6 +8,10 @@ logging:
   config: classpath:log/logback/logging-config.xml
   level:
     root: INFO
+    top:
+      javaguo:
+        biz:
+          system: DEBUG
     org:
       apache:
         tomcat: WARN
@@ -84,7 +88,7 @@ mybatis.configuration.map-underscore-to-camel-case: true  #开启驼峰转换
 #mybatis配置
 mybatis:
   #配置SQL映射文件路径
-  mapper-locations: /static/*.xml
+  mapper-locations: /top/javaguo/biz/**/*.xml
   configuration.map-underscore-to-camel-case: true  #开启驼峰转换
 #微信小程序参数
 wx:
